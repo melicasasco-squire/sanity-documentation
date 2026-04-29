@@ -682,7 +682,7 @@
   <span class="topbar-logo">Squire</span>
   <span class="topbar-sep">/</span>
   <span class="topbar-title">Component Library — Sanity Studio</span>
-  <span class="topbar-badge">v1.0 · 39 components</span>
+  <span class="topbar-badge">v1.0 · 49 components</span>
 </div>
 
 <!-- ── Layout ───────────────────────────────────────────────────── -->
@@ -693,7 +693,7 @@
     <div class="sidebar-search-wrap">
       <input class="sidebar-search" type="search" placeholder="Search components…" id="search" oninput="filterComponents(this.value)" />
     </div>
-    <div class="sidebar-count" id="sidebar-count">39 components</div>
+    <div class="sidebar-count" id="sidebar-count">49 components</div>
     <div class="sidebar-list" id="sidebar-list">
       <!-- populated by JS -->
     </div>
@@ -1418,6 +1418,135 @@ const COMPONENTS = [
     ],
     preview: null,
   },
+  // ── Landing ──────────────────────────────────────────────────────
+  {
+    id: 'landingHero', name: 'Landing Hero', group: 'Landing',
+    description: 'Hero with a rich-text title, product image (contain or cover), optional image overlay text, and a "Get notified" signup card with configurable form fields.',
+    fields: [
+      { name: 'title', type: 'array<block>', req: true, desc: 'Main headline. Use Normal for intro text and Bold for the product name (e.g. "Introducing" normal, "ENGAGE 2.0" bold).' },
+      { name: 'image', type: 'image', req: false, desc: 'Product mockup or photo displayed in a rounded container.' },
+      { name: 'imageFit', type: 'string (contain | cover)', req: false, desc: '"contain" shows the full image (ideal for mockups); "cover" fills the container (ideal for photos). Default: contain.' },
+      { name: 'imageOverlayText', type: 'text', req: false, desc: 'Optional text shown over the image at the bottom (e.g. "Partnering with SQUIRE...").' },
+      { name: 'cardTitle', type: 'string', req: false, desc: 'Heading for the signup card. Default: "Get notified".' },
+      { name: 'fields[].fieldType', type: 'string (text | email | tel)', req: true, desc: 'Input type.' },
+      { name: 'fields[].name', type: 'string', req: true, desc: 'HTML field name — stable identifier used by integrations (e.g. first_name).' },
+      { name: 'fields[].label', type: 'string', req: true, desc: 'Visible label.' },
+      { name: 'fields[].placeholder', type: 'string', req: false, desc: 'Placeholder text.' },
+      { name: 'fields[].required', type: 'boolean', req: false, desc: 'Required field. Default: false.' },
+      { name: 'consentText', type: 'array<block>', req: false, desc: 'Checkbox label with links to Terms of Service / Privacy Policy.' },
+      { name: 'submitLabel', type: 'string', req: false, desc: 'Submit button label. Default: "NOTIFY ME WHEN READY".' },
+      { name: 'webhookUrl', type: 'url', req: false, desc: 'POST endpoint that receives form submissions.' },
+      { name: 'successMessage', type: 'string', req: false, desc: 'Message shown after successful submission.' },
+      { name: 'errorMessage', type: 'string', req: false, desc: 'Message shown on submission error.' },
+    ],
+    preview: null,
+  },
+  {
+    id: 'landingVideoSection', name: 'Landing Video Section', group: 'Landing',
+    description: 'Two-column layout: title + description on the left, YouTube video embed on the right.',
+    fields: [
+      { name: 'title', type: 'string', req: true, desc: 'Section title (e.g. "Powered by AI").' },
+      { name: 'description', type: 'text', req: false, desc: 'Paragraph below the title.' },
+      { name: 'youtubeUrl', type: 'url', req: true, desc: 'Full YouTube URL (e.g. https://www.youtube.com/watch?v=...).' },
+    ],
+    preview: null,
+  },
+  {
+    id: 'landingQuote', name: 'Landing Quote', group: 'Landing',
+    description: 'Full-width testimonial with decorative quote marks. Bold words in the quote render in the chosen accent color.',
+    fields: [
+      { name: 'quote', type: 'array<block>', req: true, desc: 'Quote text. Apply Bold to words you want highlighted in the accent color.' },
+      { name: 'accentColor', type: 'string (pink | yellow)', req: false, desc: 'Color for bold text and the quote icon. Default: pink.' },
+      { name: 'authorName', type: 'string', req: true, desc: 'Author name.' },
+      { name: 'authorDetail', type: 'string', req: false, desc: 'Role or location (e.g. "Privado Studios — Atlanta, GA").' },
+    ],
+    preview: null,
+  },
+  {
+    id: 'landingFeatures', name: 'Landing Features', group: 'Landing',
+    description: 'Section title + grid of 1–4 feature cards, each with an image, title, and description.',
+    fields: [
+      { name: 'title', type: 'string', req: true, desc: 'Section label (e.g. "FEATURES").' },
+      { name: 'cards[].cardTitle', type: 'string', req: true, desc: 'Feature name.' },
+      { name: 'cards[].description', type: 'text', req: false, desc: 'Short feature description.' },
+      { name: 'cards[].image', type: 'image', req: false, desc: 'Feature illustration or screenshot.' },
+    ],
+    preview: null,
+  },
+  {
+    id: 'landingFaq', name: 'Landing FAQ', group: 'Landing',
+    description: 'Split layout: section title on the left, accordion FAQ list on the right.',
+    fields: [
+      { name: 'title', type: 'string', req: true, desc: 'Section heading (e.g. "FAQS").' },
+      { name: 'items[].question', type: 'string', req: true, desc: 'FAQ question.' },
+      { name: 'items[].answer', type: 'text', req: true, desc: 'FAQ answer.' },
+    ],
+    preview: null,
+  },
+  {
+    id: 'landingCta', name: 'Landing CTA', group: 'Landing',
+    description: 'Full-width CTA band with title, description, button, and optional background image.',
+    fields: [
+      { name: 'title', type: 'string', req: true, desc: 'CTA headline (e.g. "STACK MORE. STRESS LESS.").' },
+      { name: 'description', type: 'string', req: false, desc: 'Supporting line below the title.' },
+      { name: 'buttonLabel', type: 'string', req: false, desc: 'Button label. Default: "NOTIFY ME WHEN READY".' },
+      { name: 'buttonLink', type: 'string', req: false, desc: 'URL or anchor (e.g. "#notify").' },
+      { name: 'backgroundImage', type: 'image', req: false, desc: 'Background texture or photo.' },
+    ],
+    preview: null,
+  },
+  {
+    id: 'landingFullHero', name: 'Landing Full Hero', group: 'Landing',
+    description: 'Full-bleed background image with a centered title, description, CTA button, and an optional overlay image. Uses a separate mobile background.',
+    fields: [
+      { name: 'backgroundImage', type: 'image', req: true, desc: 'Desktop background image (full bleed).' },
+      { name: 'imageMobile', type: 'image', req: true, desc: 'Mobile background image.' },
+      { name: 'title', type: 'array<block>', req: true, desc: 'Main headline over the background. Supports bold.' },
+      { name: 'description', type: 'array<block>', req: false, desc: 'Supporting paragraph.' },
+      { name: 'cta.text', type: 'string', req: false, desc: 'CTA button label.' },
+      { name: 'cta.href', type: 'string', req: false, desc: 'CTA button URL.' },
+      { name: 'image', type: 'image', req: false, desc: 'Overlay image (e.g. product mockup) placed over the background.' },
+    ],
+    preview: null,
+  },
+  {
+    id: 'landingImageGrid', name: 'Landing Image Grid', group: 'Landing',
+    description: '2×2 image grid on the left, title + description + CTA on the right. Requires exactly 4 images.',
+    fields: [
+      { name: 'images', type: 'array<image> (exactly 4)', req: true, desc: 'Exactly 4 images displayed in a 2×2 grid.' },
+      { name: 'title', type: 'string', req: true, desc: 'Section title (e.g. "STAY SHARP WITH SQUIRE").' },
+      { name: 'description', type: 'text', req: false, desc: 'Supporting text.' },
+      { name: 'cta.text', type: 'string', req: false, desc: 'CTA button label.' },
+      { name: 'cta.href', type: 'string', req: false, desc: 'CTA button URL.' },
+    ],
+    preview: null,
+  },
+  {
+    id: 'landingScrollShowcase', name: 'Landing Scrolling Showcase', group: 'Landing',
+    description: 'Scroll-driven section where each slide transitions the background color and swaps the image as the user scrolls. Each slide has a stat, CTA, and image.',
+    fields: [
+      { name: 'slides[].title', type: 'string', req: true, desc: 'Slide heading.' },
+      { name: 'slides[].statValue', type: 'string', req: false, desc: 'Large stat number or phrase (e.g. "80%" or "NO MORE").' },
+      { name: 'slides[].statLabel', type: 'string', req: false, desc: 'Stat description (e.g. "of bookings become returning customers").' },
+      { name: 'slides[].ctaText', type: 'string', req: false, desc: 'CTA link label.' },
+      { name: 'slides[].ctaHref', type: 'string', req: false, desc: 'CTA link URL.' },
+      { name: 'slides[].image', type: 'image', req: true, desc: 'Slide image (transitions in as the slide enters view).' },
+      { name: 'slides[].backgroundColor', type: 'string (hex)', req: false, desc: 'Background color for this slide (e.g. "#1a1a2e"). Default: #1a1a2e.' },
+    ],
+    preview: null,
+  },
+  {
+    id: 'landingCarousel', name: 'Landing Carousel', group: 'Landing',
+    description: 'Auto-playing carousel with a progress bar. Each slide has a rich-text title (bold = highlighted), description, CTA, and image.',
+    fields: [
+      { name: 'slides[].title', type: 'array<block>', req: true, desc: 'Slide headline. Apply Bold to words you want highlighted (e.g. "FOR **OWNERS**").' },
+      { name: 'slides[].description', type: 'text', req: false, desc: 'Supporting description.' },
+      { name: 'slides[].ctaText', type: 'string', req: false, desc: 'CTA label.' },
+      { name: 'slides[].ctaHref', type: 'string', req: false, desc: 'CTA URL.' },
+      { name: 'slides[].image', type: 'image (800×400)', req: true, desc: 'Slide image. Recommended size: 800×400 px.' },
+    ],
+    preview: null,
+  },
 ];
 
 /* ── Previews ───────────────────────────────────────────────────── */
@@ -1681,6 +1810,76 @@ function renderPreview(id) {
         <p class="section-label">Visual preview</p>
         <div class="preview-box">
           <img class="preview-img" src="images/ai-signup-form.png" alt="AI Signup Form preview"
+            onerror="this.outerHTML='<div style=\'background:#1a1a1a;padding:20px 16px;color:#555;font-size:12px;text-align:center\'>Preview not found</div>'" />
+        </div>`;
+    case 'landingHero':
+      return `
+        <p class="section-label">Visual preview</p>
+        <div class="preview-box">
+          <img class="preview-img" src="images/landing-hero.png" alt="Landing Hero preview"
+            onerror="this.outerHTML='<div style=\'background:#1a1a1a;padding:20px 16px;color:#555;font-size:12px;text-align:center\'>Preview not found</div>'" />
+        </div>`;
+    case 'landingVideoSection':
+      return `
+        <p class="section-label">Visual preview</p>
+        <div class="preview-box">
+          <img class="preview-img" src="images/landing-video-section.png" alt="Landing Video Section preview"
+            onerror="this.outerHTML='<div style=\'background:#1a1a1a;padding:20px 16px;color:#555;font-size:12px;text-align:center\'>Preview not found</div>'" />
+        </div>`;
+    case 'landingQuote':
+      return `
+        <p class="section-label">Visual preview</p>
+        <div class="preview-box">
+          <img class="preview-img" src="images/landing-quote.png" alt="Landing Quote preview"
+            onerror="this.outerHTML='<div style=\'background:#1a1a1a;padding:20px 16px;color:#555;font-size:12px;text-align:center\'>Preview not found</div>'" />
+        </div>`;
+    case 'landingFeatures':
+      return `
+        <p class="section-label">Visual preview</p>
+        <div class="preview-box">
+          <img class="preview-img" src="images/landing-features.png" alt="Landing Features preview"
+            onerror="this.outerHTML='<div style=\'background:#1a1a1a;padding:20px 16px;color:#555;font-size:12px;text-align:center\'>Preview not found</div>'" />
+        </div>`;
+    case 'landingFaq':
+      return `
+        <p class="section-label">Visual preview</p>
+        <div class="preview-box">
+          <img class="preview-img" src="images/landing-FAQS.png" alt="Landing FAQ preview"
+            onerror="this.outerHTML='<div style=\'background:#1a1a1a;padding:20px 16px;color:#555;font-size:12px;text-align:center\'>Preview not found</div>'" />
+        </div>`;
+    case 'landingCta':
+      return `
+        <p class="section-label">Visual preview</p>
+        <div class="preview-box">
+          <img class="preview-img" src="images/landing-cta.png" alt="Landing CTA preview"
+            onerror="this.outerHTML='<div style=\'background:#1a1a1a;padding:20px 16px;color:#555;font-size:12px;text-align:center\'>Preview not found</div>'" />
+        </div>`;
+    case 'landingFullHero':
+      return `
+        <p class="section-label">Visual preview</p>
+        <div class="preview-box">
+          <img class="preview-img" src="images/landing-full-hero.png" alt="Landing Full Hero preview"
+            onerror="this.outerHTML='<div style=\'background:#1a1a1a;padding:20px 16px;color:#555;font-size:12px;text-align:center\'>Preview not found</div>'" />
+        </div>`;
+    case 'landingImageGrid':
+      return `
+        <p class="section-label">Visual preview</p>
+        <div class="preview-box">
+          <img class="preview-img" src="images/landing-image-grid.png" alt="Landing Image Grid preview"
+            onerror="this.outerHTML='<div style=\'background:#1a1a1a;padding:20px 16px;color:#555;font-size:12px;text-align:center\'>Preview not found</div>'" />
+        </div>`;
+    case 'landingScrollShowcase':
+      return `
+        <p class="section-label">Visual preview</p>
+        <div class="preview-box">
+          <img class="preview-img" src="images/landing-scrolling-showcase.png" alt="Landing Scrolling Showcase preview"
+            onerror="this.outerHTML='<div style=\'background:#1a1a1a;padding:20px 16px;color:#555;font-size:12px;text-align:center\'>Preview not found</div>'" />
+        </div>`;
+    case 'landingCarousel':
+      return `
+        <p class="section-label">Visual preview</p>
+        <div class="preview-box">
+          <img class="preview-img" src="images/landing-carousel.png" alt="Landing Carousel preview"
             onerror="this.outerHTML='<div style=\'background:#1a1a1a;padding:20px 16px;color:#555;font-size:12px;text-align:center\'>Preview not found</div>'" />
         </div>`;
     default:
